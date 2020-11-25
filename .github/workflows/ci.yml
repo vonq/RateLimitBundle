@@ -19,6 +19,8 @@ jobs:
             COMPOSER_FLAGS: ${{ matrix.composer_flags }}
             SYMFONY_VERSION: ${{ matrix.symfony_version }}
 
+        # prefer lowest gives issues with the latest "void" return type
+        continue-on-error: ${{ matrix.composer_flags == "--prefer-lowest" }}
         steps:
             - name: Setup PHP
               uses: shivammathur/setup-php@v2
