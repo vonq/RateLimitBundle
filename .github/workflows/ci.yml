@@ -38,7 +38,6 @@ jobs:
                 # TODO: we should add things like phpstan, phpcs etc
                 php vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
             - name: Upload coverage
-              uses: codecov/codecov-action@master
               run: |
                 wget https://scrutinizer-ci.com/ocular.phar
                 php ocular.phar code-coverage:upload --format=php-clover coverage.clover
