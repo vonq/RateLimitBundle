@@ -33,6 +33,7 @@ jobs:
                 composer self-update
                 if [ "$SYMFONY_VERSION" != "" ]; then composer require "symfony/symfony:${SYMFONY_VERSION}" --no-update; fi;
                 if [ "$SYMFONY_VERSION" = "5.0.*" ]; then composer remove --dev "friendsofsymfony/oauth-server-bundle" --no-update; fi;
+                COMPOSER_MEMORY_LIMIT=-1 composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
             - name: Run tests
               run: |
                 # TODO: we should add things like phpstan, phpcs etc
